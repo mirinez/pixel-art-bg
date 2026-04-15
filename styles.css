@@ -1,0 +1,106 @@
+/*
+   styles.css | Pixel Art Background
+   Míriam Domínguez Martínez
+*/
+
+/*
+   1. BASE CONFIGURATION
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+/*
+   2. PARALLAX CONTAINER
+*/
+
+.parallax-container {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background-color: #2b2b2b; /* Fallback background color */
+}
+
+/*
+   3. LAYER PROPERTIES (COMMON)
+*/
+
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: repeat-x;
+    background-position: 0 bottom;
+    background-size: auto 100%;
+    /* Vital for crisp Pixel Art */
+    image-rendering: pixelated;
+    background-size: calc(100% + 1px) 100%;
+    image-rendering: pixelated;   /* Chrome/Edge */
+    image-rendering: crisp-edges; /* Firefox */
+    will-change: background-position;
+    transform: translateZ(0);
+}
+
+/*
+   4. LAYER IMAGES AND SPEEDS
+   Higher duration (s) means slower movement
+*/
+
+/* Layer 1: Sky (Static or very slow) */
+.l1 { 
+    background-image: url('img/layer_1.png'); 
+}
+
+/* Layer 2: Distant background */
+.l2 { 
+    background-image: url('img/layer_2.png'); 
+    animation: move-parallax 180s linear infinite; 
+}
+
+/* Layer 3: Far midground */
+.l3 { 
+    background-image: url('img/layer_3.png'); 
+    animation: move-parallax 120s linear infinite; 
+}
+
+/* Layer 4: Midground */
+.l4 { 
+    background-image: url('img/layer_4.png'); 
+    animation: move-parallax 80s linear infinite; 
+}
+
+/* Layer 5: Foreground */
+.l5 { 
+    background-image: url('img/layer_5.png'); 
+    animation: move-parallax 40s linear infinite; 
+}
+
+/* Layer 6: Closest foreground (Fastest) */
+.l6 { 
+    background-image: url('img/layer_6.png'); 
+    animation: move-parallax 20s linear infinite; 
+}
+
+/*
+   5. ANIMATIONS
+*/
+
+@keyframes move-parallax {
+    from {
+        background-position: 0 bottom;
+    }
+    to {
+        /* Negative value moves the background to the left */
+        /* 3840px provides a smooth loop for wide textures */
+        background-position: -3840px bottom; 
+    }
+}
