@@ -9,11 +9,25 @@
 
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-html, body {
+body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100vh;
+    display: flex; /* flex para centrar */
+    justify-content: center;
+    align-items: center;
+    background-color: #ecf0f1;
     overflow: hidden;
+}
+
+/* El bloque central */
+.game-window {
+    width: 800px;
+    height: 450px;
+    position: relative;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    overflow: hidden; 
 }
 
 /*
@@ -21,11 +35,10 @@ html, body {
 */
 
 .parallax-container {
-    position: fixed;
+    position: absolute;
     width: 100%;
-    height: 100vh;
-    z-index: -1;
-    background-color: #2b2b2b; /* Fallback background color */
+    height: 100%;
+    background-color: #2b2b2b;
 }
 
 /*
@@ -63,31 +76,31 @@ html, body {
 /* Layer 2: Distant background */
 .l2 { 
     background-image: url('img/layer_2.png'); 
-    animation: move-parallax 200s linear infinite; 
+    animation: move-parallax 220s linear infinite; 
 }
 
 /* Layer 3: Far midground */
 .l3 { 
     background-image: url('img/layer_3.png'); 
-    animation: move-parallax 150s linear infinite; 
+    animation: move-parallax 180s linear infinite; 
 }
 
 /* Layer 4: Midground */
 .l4 { 
     background-image: url('img/layer_4.png'); 
-    animation: move-parallax 100s linear infinite; 
+    animation: move-parallax 120s linear infinite; 
 }
 
 /* Layer 5: Foreground */
 .l5 { 
     background-image: url('img/layer_5.png'); 
-    animation: move-parallax 60s linear infinite; 
+    animation: move-parallax 100s linear infinite; 
 }
 
 /* Layer 6: Closest foreground (Fastest) */
 .l6 { 
     background-image: url('img/layer_6.png'); 
-    animation: move-parallax 50s linear infinite; 
+    animation: move-parallax 80s linear infinite; 
 }
 
 /*
@@ -103,4 +116,59 @@ html, body {
         /* 3840px provides a smooth loop for wide textures */
         background-position: -3840px bottom; 
     }
+}
+
+/*
+   6. CARD CONTAINER
+*/
+
+/* Contenedor para centrar la postal y dar perspectiva */
+.card-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    perspective: 1000px; /* efecto 3D */
+    cursor: pointer;
+    z-index: 10;
+}
+
+.card {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'VT323', monospace;
+}
+
+.card-container:hover .card {
+    transform: rotateY(-180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Cara frontal */
+.front {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+}
+
+/* Cara trasera */
+.back {
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    transform: rotateY(180deg); /* Empieza invertida */
 }
