@@ -63,31 +63,31 @@ html, body {
 /* Layer 2: Distant background */
 .l2 { 
     background-image: url('img/layer_2.png'); 
-    animation: move-parallax 180s linear infinite; 
+    animation: move-parallax 200s linear infinite; 
 }
 
 /* Layer 3: Far midground */
 .l3 { 
     background-image: url('img/layer_3.png'); 
-    animation: move-parallax 120s linear infinite; 
+    animation: move-parallax 150s linear infinite; 
 }
 
 /* Layer 4: Midground */
 .l4 { 
     background-image: url('img/layer_4.png'); 
-    animation: move-parallax 80s linear infinite; 
+    animation: move-parallax 100s linear infinite; 
 }
 
 /* Layer 5: Foreground */
 .l5 { 
     background-image: url('img/layer_5.png'); 
-    animation: move-parallax 40s linear infinite; 
+    animation: move-parallax 60s linear infinite; 
 }
 
 /* Layer 6: Closest foreground (Fastest) */
 .l6 { 
     background-image: url('img/layer_6.png'); 
-    animation: move-parallax 20s linear infinite; 
+    animation: move-parallax 50s linear infinite; 
 }
 
 /*
